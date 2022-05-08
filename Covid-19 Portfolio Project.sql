@@ -113,15 +113,13 @@ order by max_death_rate desc
 Select location, max(total_deaths) max_total_deaths
 FROM [dbo].['Covid Deaths']
 group by location 
-order by max_total_deaths desc    /* When we look at the resukts, they doesn't make sense, most of them are 90s so we cast the max total deaths as integer */ 
+order by max_total_deaths desc    /* When we look at the results, they doesn't make sense, most of them are 90s so we cast the max total deaths as integer */ 
 /* This happens alot of times */ 
 
 Select location, max(cast(total_deaths as int)) max_total_deaths
 FROM [dbo].['Covid Deaths']
 group by location 
-order by max_total_deaths desc    /* This issue was solved but now we have another issue: we notice locations as world , north america, Asia...
-but we are looking for countries not continents ..) one of the reasons we noticed is that when the continent is empty, the name of the continet is inserted in the 
-location column so to solve that: ( 2mrar bdl ma ynzl 2sm l continent be l column lal continet 3m ynzl bl column lal location w 3m ynzl null bdel l2sm) */ 
+order by max_total_deaths desc   
 
 
 Select location, max(cast(total_deaths as int)) max_total_deaths
@@ -143,16 +141,12 @@ order by Max_total_deaths desc
 
 /* Global  cases , deaths every day and death rate every day : */ 
 
-/* Since bddi 2st3ml group by so total death and total deaths lezm 23mlln aggregate function, so 27sa she bdl ma 2st3mln bst3ml new cases w b3mlln sum by3toni l 
-total cases and same lal total deaths */
-
 SELECT date, sum(new_cases) Total_cases ,sum(new_deaths) Total_deaths 
 FROM [dbo].['Covid Deaths']
 WHERE continent is not null 
 Group by date 
-order by 2   /* We notice that if we run this code , we will get an error: 3m y2lna 2nno fe data type nvchar w ana 3m 23mlla sum w
-ma fena n3ml hek, ana 3m 23ml sum lal new cases and new deaths, bro7 bt2kkd mn ldata type t3oltn: 3l shmel 2sm ltable fe plus sign 7ddo, brj3 bkbs 3l 
-columns w by3tini ltype la kl column, so bddi 2rj3 23ml cast to int: */ 
+order by 2  
+
 
 SELECT date, sum(new_cases) Total_cases ,sum(cast(new_deaths as INT)) Total_deaths 
 FROM [dbo].['Covid Deaths']
