@@ -1,0 +1,90 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- user_yes:
+    use_entities: true
+- user_no:
+    use_entities: true
+- meal_preference:
+    use_entities: true
+- food_preference:
+    use_entities: true
+- ingredient_from_user:
+    use_entities: true
+- select_more_ingeridents:
+    use_entities: true
+- recommend_food:
+    use_entities: true
+- type_fav_food:
+    use_entities: true
+- repeat_food_name:
+    use_entities: true
+entities:
+- meal_type
+- food_catogery
+- ingredients_list
+slots:
+  meal_type:
+    type: rasa.shared.core.slots.CategoricalSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+    values:
+    - vegeterian
+    - non-vegeterian
+  food_catogery:
+    type: rasa.shared.core.slots.CategoricalSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+    values:
+    - appetizer
+    - salad
+    - mains
+    - wraps
+    - mashrooha
+    - manakeesh
+    - platters
+    - crispy
+    - masemo
+    - drinks
+    - desserts
+  ingredients_list:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+  user_choice_food:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+responses:
+  utter_greet:
+  - text: Hi, Welcome! I am your food recommender bot. Do you have any food of your choice? Else I can help you find food which you might like.
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_reply_yes:
+  - text: Great! Please type you favourite dish name
+  utter_more_ingerident:
+  - text: Do you have more choices for ingeridents?
+actions:
+- setMealPreference
+- setFoodCatogery
+- actionSelectIngerident1
+- actionAddIngToList
+- actionRecommendFood
+- action_receive_user_food
+- action_tell_user_food
+forms: {}
+e2e_actions: []
