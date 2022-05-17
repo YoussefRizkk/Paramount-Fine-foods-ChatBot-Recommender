@@ -1,0 +1,54 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - greetings
+    - hi
+- intent: user_no
+  examples: |
+    - no
+    - I don't have a food of my choice
+    - i don't know the menu
+    - i am new to this restaurant
+- intent: user_yes
+  examples: |
+    - yes
+    - yes i have a favourite food of mine
+    - ya i know the menu
+- intent: meal_preference
+  examples: |
+    - i am a [vegeterian](meal_type)
+    - i am  a [non-vegeterian](meal_type)
+    - i eat [vegeterian](meal_type) food
+    - /meal_preference{"meal_type":"non-vegeterian"}
+- intent: food_preference
+  examples: |
+    - i want [appetizer](food_catogery)
+    - i like to have [salads](food_catogery)
+    - /food_preference{"food_catogery":"Mains"}
+- intent: ingredient_from_user
+  examples: |
+    - i want [cauliflower](ingredients_list), [bbq beef](ingredients_list) and [grilled salmon](ingredients_list)
+    - i like to have [lemon](ingredients_list), [cucumber](ingredients_list) and [seasoned chicken](ingredients_list)
+    - i want [tahini](ingredients_list), [pickels](ingredients_list) and [rice](ingredients_list)
+    - /ingredient_from_user{"ingredients_list":"tahini"}
+    - /ingredient_from_user{"ingredients_list":"lettuce"}
+    - /ingredient_from_user{"ingredients_list":"char grilled"}
+    - /ingredient_from_user{"ingredients_list":"lamb chops"}
+- intent: select_more_ingeridents
+  examples: |
+    - yes i want to select more ingeridents
+    - yes more ingeridents
+    - more ingeridents
+    - more ingerdients
+- intent: recommend_food
+  examples: |
+    - please recommend food
+    - what is your recommendation
+    - what should i eat
+- intent: type_fav_food
+  examples: |
+    - lentil soup
+    - falafel
+    - beef

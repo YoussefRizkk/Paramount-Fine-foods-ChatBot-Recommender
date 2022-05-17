@@ -1,0 +1,90 @@
+version: "2.0"
+stories:
+- story: welcome
+  steps:
+  - intent: greet
+  - action: utter_greet
+- story: Story_select food
+  steps:
+  - intent: user_yes
+  - action: utter_reply_yes
+  - intent: type_fav_food
+  - action: action_receive_user_food
+  - slot_was_set:
+    - user_choice_food: lentil soup
+  - action: action_tell_user_food
+- story: Story_select_ingeridents
+  steps:
+  - intent: user_no
+  - action: setMealPreference
+  - intent: meal_preference
+    entities:
+    - meal_type: non-vegeterian
+  - slot_was_set:
+    - meal_type: non-vegeterian
+  - action: setFoodCatogery
+  - intent: food_preference
+    entities:
+    - food_catogery: Mains
+  - slot_was_set:
+    - food_catogery: Mains
+  - action: actionSelectIngerident1
+  - intent: ingredient_from_user
+    entities:
+    - ingredients_list: tahini
+  - slot_was_set:
+    - ingredients_list:
+      - tahini
+  - action: actionAddIngToList
+  - action: actionSelectIngerident1
+  - intent: ingredient_from_user
+    entities:
+    - ingredients_list: lettuce
+  - slot_was_set:
+    - ingredients_list:
+      - lettuce
+  - action: actionAddIngToList
+  - action: actionRecommendFood
+- story: Story from Conversation ID 565a5c1b4b354f84be666e4f8082651e
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_no
+  - action: setMealPreference
+  - slot_was_set:
+    - meal_type: non-vegeterian
+  - intent: meal_preference
+    entities:
+    - meal_type: non-vegeterian
+  - action: setFoodCatogery
+  - slot_was_set:
+    - food_catogery: Mains
+  - intent: food_preference
+    entities:
+    - food_catogery: Mains
+  - action: actionSelectIngerident1
+  - slot_was_set:
+    - ingredients_list: bbq chicken
+  - intent: ingredient_from_user
+    entities:
+    - ingredients_list: bbq chicken
+  - action: actionAddIngToList
+  - action: actionSelectIngerident1
+  - slot_was_set:
+    - ingredients_list: lettuce
+  - intent: ingredient_from_user
+    entities:
+    - ingredients_list: lettuce
+  - action: actionAddIngToList
+  - action: actionRecommendFood
+- story: Story from Conversation ID 5ac6024119564a349fcc0dab4ffde5c4
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: user_yes
+  - action: utter_reply_yes
+  - intent: type_fav_food
+  - action: action_receive_user_food
+  - slot_was_set:
+    - user_choice_food: lentil soup
+  - action: action_tell_user_food
